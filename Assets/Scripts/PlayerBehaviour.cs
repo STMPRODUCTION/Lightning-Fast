@@ -16,11 +16,8 @@ public class PlayerBehaviour : MonoBehaviour
     private Rigidbody2D m_Rigidbody2D;
     private Vector2 m_Velocity = Vector2.zero;
     Vector2 moveInput;
-
-
     [Header("Events")]
     [Space]
-
     public UnityEvent OnLandEvent;
 
     private void Awake()
@@ -56,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Vector2 targetVelocity = moveInput;
             m_Rigidbody2D.velocity = Vector2.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-            Debug.Log(m_Rigidbody2D.velocity);
+            //Debug.Log(m_Rigidbody2D.velocity);
         if (m_Rigidbody2D.velocity.magnitude > 5f)
             {
                 m_Rigidbody2D.velocity = m_Rigidbody2D.velocity.normalized * 5f;

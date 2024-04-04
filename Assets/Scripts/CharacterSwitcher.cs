@@ -12,27 +12,12 @@ public class CharacterSwitcher: MonoBehaviour
 
      private void Awake()
     {
-        // Get all connected gamepads
-        var connectedGamepads = Gamepad.all;
 
-        if (connectedGamepads.Count == 0)
-        {
-            // If no gamepad is connected, spawn both players with keyboard control
-            PlayerInput.Instantiate(playerPrefab1, controlScheme: "Keyboard", pairWithDevice: Keyboard.current);
-            PlayerInput.Instantiate(playerPrefab2, controlScheme: "Keyboard", pairWithDevice: Keyboard.current);
-        }
-        else if (connectedGamepads.Count == 1)
-        {
-            // If only one gamepad is connected, spawn player 1 with gamepad and player 2 with keyboard
-            PlayerInput.Instantiate(playerPrefab1, controlScheme: "Player1", pairWithDevice: connectedGamepads[0]);
-            PlayerInput.Instantiate(playerPrefab2, controlScheme: "Keyboard", pairWithDevice: Keyboard.current);
-        }
-        else
-        {
-            // If multiple gamepads are connected, spawn both players with gamepad control
-            PlayerInput.Instantiate(playerPrefab1, controlScheme: "Player1", pairWithDevice: connectedGamepads[0]);
-            PlayerInput.Instantiate(playerPrefab2, controlScheme: "Player2", pairWithDevice: connectedGamepads[1]);
-        }
+            var p1 = PlayerInput.Instantiate(playerPrefab1, controlScheme: "idkbro", pairWithDevice: Gamepad.all[0]);
+            var p2 = PlayerInput.Instantiate(playerPrefab2, controlScheme: "idkbro2", pairWithDevice: Gamepad.all[1]);
+
+            Debug.Log(Gamepad.all[0]);
+            Debug.Log(Gamepad.all[1]);
     }
     
 }
