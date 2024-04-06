@@ -13,12 +13,14 @@ public class CombatController : MonoBehaviour
     public Collider2D lightAttackCollider;
     // Attack damage for light and heavy attacks
     public int currentIndex = 0;
-    public GameObject player; // Reference to the GameObject of the player
+    public GameObject player;
+    public GameObject gmg;
+    private int cid;
     public float colorChangeDuration = 1f; // Duration for which the color will remain changed
     private Color originalColor;
     private Rigidbody2D playerRigidbody;
     public int playerID;
-    private int dmg; // Player ID variable
+    private int dmg;
     private bool cantakedamage;
     [SerializeField]private int atID;
 
@@ -34,6 +36,9 @@ public class CombatController : MonoBehaviour
         { 2, 2, 1, 3, 3, 2, 3, -1}
 
     };
+    private HealthController healthController;
+
+    public string layername; // Layer name to search for
     // Index to keep track of the current combo sequence
     private int comboIndex = 0;
     private List<int> disabledRows = new List<int>();
@@ -41,6 +46,33 @@ public class CombatController : MonoBehaviour
     {
         originalColor = player.GetComponent<SpriteRenderer>().color;
         playerRigidbody = player.GetComponent<Rigidbody2D>();
+        // Find all GameObjects with the specified tag
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(layername);
+
+        // Check if any objects with the specified tag were found
+        if (gameObjects.Length > 0)
+        {
+            // Get the first object with the specified tag
+            GameObject objectWithTag = gameObjects[0];
+
+            // Try to get the HealthController component from the object
+            HealthController hc = objectWithTag.GetComponent<HealthController>();
+
+            // If the HealthController component is found, assign it
+            if (hc != null)
+            {
+                healthController = hc;
+                Debug.Log("assigned");
+            }
+            else
+            {
+                Debug.LogError("No object with the specified layer name has the HealthController component.");
+            }
+        }
+        else
+        {
+            Debug.LogError("No object with the specified tag was found.");
+        }
     }
     public void ExecuteAttack(int attackId)
     {
@@ -94,32 +126,26 @@ public class CombatController : MonoBehaviour
     // Function to be triggered when a combo is executed
     private void ComboExecuted(int comboId)
     {
+        cid=comboId;
         lightAttackCollider.enabled = true;
-        if(comboId == 0)
-        {
-            dmg=7;
-            
+        /*if(comboId == 0)
+        { 
         }
         if(comboId == 1)
         {
-            dmg= 5;
            
         }
         if(comboId == 2)
-        {
-            dmg= 3;
-            
+        {         
         }
         if(comboId == 3)
         {
-            dmg= 20;
             
         }
         if (playerRigidbody != null)
         {
-            // Apply a vertical force to make the player go up a little
-             playerRigidbody.AddForce(Vector2.up * (comboId + 1) * 5, ForceMode2D.Impulse);
-        }
+             //playerRigidbody.AddForce(Vector2.up * (comboId + 1) * 5, ForceMode2D.Impulse);
+        }*/
     
         lightAttackCollider.enabled = true;
         Invoke("DeactivateCollider", 1f);
@@ -128,7 +154,6 @@ public class CombatController : MonoBehaviour
     private void DeactivateCollider()
     {
         lightAttackCollider.enabled = false;
-        Debug.Log($"Deactivated");
     }
     private void ChangePlayerColor(Color color)
     {
@@ -149,8 +174,7 @@ public class CombatController : MonoBehaviour
     {
         if (context.started)
         {
-            OnJab.Invoke();
-            Debug.Log($"invoked");
+
             dmg = 1;
             atID=1;
             ExecuteAttack(1);
@@ -188,19 +212,41 @@ public class CombatController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if collided with enemy and attacking
-        if (other.CompareTag("Enemy") || other.CompareTag("Player"))
+        if (other.CompareTag("Enemy") || other.CompareTag(layername))
         {
-           if(atID ==1)
-           {
-            //OnJab.Invoke();
-           }
-           cantakedamage =true;
+           
+            if(atID ==1)
+                healthController.TakeDamage(1);
+            else if(atID ==2)
+                healthController.TakeDamage(5);
+            else if(atID ==3)
+                healthController.TakeDamage(3);
+            if(cid == 0 && atID ==2)
+            {
+                healthController.TakeDamage(7);
+                cid=-1;
+            }
+             else if(cid == 1 && atID ==2)
+            {   
+                healthController.TakeDamage(5);
+                cid=-1;
+            }
+            else if(cid == 2 && atID ==2)
+            {
+                healthController.TakeDamage(4);
+                cid=-1;
+            }
+            else if(cid == 3 && atID ==3)
+            {
+                healthController.TakeDamage(20);
+                cid=-1;
+            }
+            cantakedamage =true;
 
         }
         else{
             cantakedamage =false;
         }
-        Debug.Log(cantakedamage);
     }
         private IEnumerator RevertColorAfterDelay(float delay)
     {

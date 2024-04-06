@@ -5,14 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - p1
+  - p2
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - p2
   - Water
   - UI
-  - 
+  - p1
   - 
   - 
   - 

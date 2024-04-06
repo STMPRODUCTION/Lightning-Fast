@@ -35,6 +35,7 @@ public class HealthController : MonoBehaviour
     {
         UpdateHealthUI();
         currentHealth-=damage;
+        Debug.Log("took"+damage);
     }
     void UpdateHealthUI()
     {
