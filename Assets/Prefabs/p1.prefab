@@ -48,6 +48,8 @@ GameObject:
   - component: {fileID: 4865577174232206594}
   - component: {fileID: 3588278265767032187}
   - component: {fileID: -3716063946729245215}
+  - component: {fileID: -546439336169747343}
+  - component: {fileID: -710927949887982044}
   m_Layer: 6
   m_Name: p1
   m_TagString: p1
@@ -412,3 +414,39 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 4785975354875897036, guid: 03e8c9ac8fd26e548bc2ab048fb5b974, type: 3}
   name: P1 Health
+--- !u!95 &-546439336169747343
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3720489897641758460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e949fe74bea33aa48a1eb7b049aaa98e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &-710927949887982044
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3720489897641758460}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1c5c3f968e959434d8fa8de99a628d21, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
