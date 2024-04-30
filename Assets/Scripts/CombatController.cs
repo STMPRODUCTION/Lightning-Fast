@@ -10,7 +10,7 @@ using System.Collections.Generic;
 public class CombatController : MonoBehaviour
 {
     // Reference to the player's attack colliders for light and heavy attacks
-    public Collider2D lightAttackCollider;
+    public Collider lightAttackCollider;
     // Attack damage for light and heavy attacks
     public int currentIndex = 0;
     public GameObject player;
@@ -18,12 +18,12 @@ public class CombatController : MonoBehaviour
     private int cid;
     public float colorChangeDuration = 1f; // Duration for which the color will remain changed
     private Color originalColor;
-    private Rigidbody2D playerRigidbody;
+    private Rigidbody playerRigidbody;
     public int playerID;
     private int dmg;
     private bool cantakedamage;
     [SerializeField]private int atID;
-
+    private Animator animator;
     [Header("Events")]
     [Space]
     public UnityEvent OnJab;
@@ -44,8 +44,8 @@ public class CombatController : MonoBehaviour
     private List<int> disabledRows = new List<int>();
     private void Start()
     {
-        originalColor = player.GetComponent<SpriteRenderer>().color;
-        playerRigidbody = player.GetComponent<Rigidbody2D>();
+         animator = GetComponent<Animator>();
+        playerRigidbody = player.GetComponent<Rigidbody>();
         // Find all GameObjects with the specified tag
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(layername);
 
@@ -107,6 +107,8 @@ public class CombatController : MonoBehaviour
                 if(comboMatrix[i,comboIndex]== -1)
                 {
                     ComboExecuted(i);
+                    animator.Play("=overhand");
+                    Debug.Log("executed combo:" + i);
                     comboIndex=0;
                     disabledRows.Clear();
                 }
@@ -128,10 +130,11 @@ public class CombatController : MonoBehaviour
     {
         cid=comboId;
         lightAttackCollider.enabled = true;
-        /*if(comboId == 0)
-        { 
+        if(comboId == 0)
+        {
+            animator.Play("=overhand");
         }
-        if(comboId == 1)
+        /*if(comboId == 1)
         {
            
         }
@@ -157,18 +160,7 @@ public class CombatController : MonoBehaviour
     }
     private void ChangePlayerColor(Color color)
     {
-        SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = color;
-
-            // Start a coroutine to revert the color change after the specified duration
-            StartCoroutine(RevertColorAfterDelay(colorChangeDuration));
-        }
-        else
-        {
-            Debug.LogWarning("SpriteRenderer component not found on player GameObject.");
-        }
+        Debug.Log("_");
     }
     public void Jab(InputAction.CallbackContext context)
     {
@@ -179,6 +171,7 @@ public class CombatController : MonoBehaviour
             atID=1;
             ExecuteAttack(1);
             ChangePlayerColor(Color.red);
+            animator.Play("jab");
             lightAttackCollider.enabled = true;
             Invoke("DeactivateCollider", 1f); // 1 represents light attack in the combo matrix
         }
@@ -192,6 +185,7 @@ public class CombatController : MonoBehaviour
             atID=2;
             ExecuteAttack(2);
             ChangePlayerColor(Color.blue);
+            animator.Play("hook");
             lightAttackCollider.enabled = true;
             Invoke("DeactivateCollider", 0.2f);
         }
@@ -204,12 +198,13 @@ public class CombatController : MonoBehaviour
             dmg = 3;
             atID=3;
             ChangePlayerColor(Color.green);
+            animator.Play("uppercut");
             lightAttackCollider.enabled = true;
             Invoke("DeactivateCollider", 1f); // 1 represents light attack in the combo matrix
         }
     }
     // Method for dealing damage to enemies
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         // Check if collided with enemy and attacking
         if (other.CompareTag("Enemy") || other.CompareTag(layername))
