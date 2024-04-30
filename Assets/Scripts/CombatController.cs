@@ -27,6 +27,7 @@ public class CombatController : MonoBehaviour
     [Header("Events")]
     [Space]
     public UnityEvent OnJab;
+    private bool IsCombo =false;
     // Combo matrix where each row represents a combo sequence
     public int[,] comboMatrix = new int[,]
     {
@@ -106,9 +107,8 @@ public class CombatController : MonoBehaviour
                     continue;
                 if(comboMatrix[i,comboIndex]== -1)
                 {
+                    IsCombo =true;
                     ComboExecuted(i);
-                    animator.Play("=overhand");
-                    Debug.Log("executed combo:" + i);
                     comboIndex=0;
                     disabledRows.Clear();
                 }
@@ -133,22 +133,24 @@ public class CombatController : MonoBehaviour
         if(comboId == 0)
         {
             animator.Play("=overhand");
+            StartCoroutine(LeaveCombo(0.1f));
         }
-        /*if(comboId == 1)
+        if(comboId == 1)
         {
-           
+           StartCoroutine(LeaveCombo(0.1f));
         }
         if(comboId == 2)
         {         
+            StartCoroutine(LeaveCombo(0.1f));
         }
         if(comboId == 3)
         {
-            
+            StartCoroutine(LeaveCombo(0.1f));
         }
         if (playerRigidbody != null)
         {
              //playerRigidbody.AddForce(Vector2.up * (comboId + 1) * 5, ForceMode2D.Impulse);
-        }*/
+        }
     
         lightAttackCollider.enabled = true;
         Invoke("DeactivateCollider", 1f);
@@ -166,14 +168,18 @@ public class CombatController : MonoBehaviour
     {
         if (context.started)
         {
-
-            dmg = 1;
-            atID=1;
-            ExecuteAttack(1);
-            ChangePlayerColor(Color.red);
-            animator.Play("jab");
-            lightAttackCollider.enabled = true;
-            Invoke("DeactivateCollider", 1f); // 1 represents light attack in the combo matrix
+            if(!IsCombo)
+            {
+                dmg = 1;
+                atID=1;
+                ExecuteAttack(1);
+                if(!IsCombo)
+                {
+                    animator.Play("jab");
+                }
+                lightAttackCollider.enabled = true;
+                Invoke("DeactivateCollider", 1f);
+            }
         }
 
     }
@@ -181,26 +187,30 @@ public class CombatController : MonoBehaviour
     {
         if (context.started)
         {
-            dmg = 5;
-            atID=2;
-            ExecuteAttack(2);
-            ChangePlayerColor(Color.blue);
-            animator.Play("hook");
-            lightAttackCollider.enabled = true;
-            Invoke("DeactivateCollider", 0.2f);
+            if(!IsCombo)
+            {
+                atID=2;
+                dmg = 5;
+                ExecuteAttack(2);
+                animator.Play("hook");
+                lightAttackCollider.enabled = true;
+                Invoke("DeactivateCollider", 0.2f);
+            }
         }
     }
     public void Uppercut(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            ExecuteAttack(3);
-            dmg = 3;
-            atID=3;
-            ChangePlayerColor(Color.green);
-            animator.Play("uppercut");
-            lightAttackCollider.enabled = true;
-            Invoke("DeactivateCollider", 1f); // 1 represents light attack in the combo matrix
+            if(!IsCombo)
+            {
+                ExecuteAttack(3);
+                dmg = 3;
+                atID=3;
+                animator.Play("uppercut");
+                lightAttackCollider.enabled = true;
+                Invoke("DeactivateCollider", 1f);
+            }
         }
     }
     // Method for dealing damage to enemies
@@ -243,11 +253,10 @@ public class CombatController : MonoBehaviour
             cantakedamage =false;
         }
     }
-        private IEnumerator RevertColorAfterDelay(float delay)
+    private IEnumerator LeaveCombo(float delay)
     {
         yield return new WaitForSeconds(delay);
-
-        // Revert the color change
-        player.GetComponent<SpriteRenderer>().color = originalColor;
+        IsCombo =false;
     }
+
 }
