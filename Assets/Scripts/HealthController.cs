@@ -9,7 +9,8 @@ public class HealthController : MonoBehaviour
     public int playerID;
     [SerializeField]
     private int currentHealth;
-    private int maxHealth=100;
+    [SerializeField]
+    private int maxHealth=500;
     public Slider healthSlider;
     [SerializeField] private string name;
       void Awake()

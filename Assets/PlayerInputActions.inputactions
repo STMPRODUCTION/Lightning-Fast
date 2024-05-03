@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DogeJab",
+                    "name": "Perryjab",
                     "type": "Button",
                     "id": "ab135267-bf9e-4ccb-a5b1-f4dcf9c0d2f6",
                     "expectedControlType": "Button",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DogeHook",
+                    "name": "perry hook",
                     "type": "Button",
                     "id": "f9839cb3-5bef-4d53-ba61-e032df384cd0",
                     "expectedControlType": "Button",
@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DogeUppercut",
+                    "name": "perry uppercut",
                     "type": "Button",
                     "id": "3c4b9ab0-04a1-4484-815f-12698029a64d",
                     "expectedControlType": "Button",
@@ -69,9 +69,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "doge",
                     "type": "Button",
-                    "id": "f8fc9aea-810f-430e-9abf-b910c9972bb0",
+                    "id": "7ad430b6-176f-4067-ab8c-1ef201c94856",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "block",
+                    "type": "Button",
+                    "id": "5e06d3b7-f67e-45c9-98e9-b3fdefb3cb38",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -180,28 +189,6 @@
                 },
                 {
                     "name": "",
-                    "id": "1c987715-9df8-4243-8841-a0b39e60a73a",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4ac09568-b47b-40e8-9935-586e04183e40",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b04cf8a8-de21-40f6-bb62-ff0a08e791f9",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
@@ -306,7 +293,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeJab",
+                    "action": "Perryjab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -317,7 +304,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeJab",
+                    "action": "Perryjab",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -328,7 +315,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeJab",
+                    "action": "Perryjab",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -339,7 +326,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeJab",
+                    "action": "Perryjab",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -350,7 +337,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeJab",
+                    "action": "Perryjab",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -361,7 +348,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeJab",
+                    "action": "Perryjab",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -372,7 +359,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeJab",
+                    "action": "Perryjab",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -383,7 +370,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeUppercut",
+                    "action": "perry uppercut",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -394,7 +381,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeUppercut",
+                    "action": "perry uppercut",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -405,7 +392,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeUppercut",
+                    "action": "perry uppercut",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -416,7 +403,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeUppercut",
+                    "action": "perry uppercut",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -427,7 +414,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeUppercut",
+                    "action": "perry uppercut",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -438,7 +425,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeUppercut",
+                    "action": "perry uppercut",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -449,18 +436,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeUppercut",
+                    "action": "perry uppercut",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
                     "id": "7924d341-3510-4f3c-9099-f0529f1cf190",
-                    "path": "<Gamepad>/rightStick/down",
+                    "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeHook",
+                    "action": "perry hook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -471,7 +458,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeHook",
+                    "action": "perry hook",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -482,7 +469,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeHook",
+                    "action": "perry hook",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -493,7 +480,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeHook",
+                    "action": "perry hook",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -504,7 +491,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeHook",
+                    "action": "perry hook",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -515,7 +502,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeHook",
+                    "action": "perry hook",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -526,9 +513,31 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DogeHook",
+                    "action": "perry hook",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4fc2895b-d645-4c9b-9066-703517a20648",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "doge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42cdf70e-4dfb-4890-a642-df9db38c7769",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

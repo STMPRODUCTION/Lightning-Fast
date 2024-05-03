@@ -64,7 +64,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DogeJab"",
+                    ""name"": ""Perryjab"",
                     ""type"": ""Button"",
                     ""id"": ""ab135267-bf9e-4ccb-a5b1-f4dcf9c0d2f6"",
                     ""expectedControlType"": ""Button"",
@@ -73,7 +73,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DogeHook"",
+                    ""name"": ""perry hook"",
                     ""type"": ""Button"",
                     ""id"": ""f9839cb3-5bef-4d53-ba61-e032df384cd0"",
                     ""expectedControlType"": ""Button"",
@@ -82,7 +82,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DogeUppercut"",
+                    ""name"": ""perry uppercut"",
                     ""type"": ""Button"",
                     ""id"": ""3c4b9ab0-04a1-4484-815f-12698029a64d"",
                     ""expectedControlType"": ""Button"",
@@ -91,9 +91,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""doge"",
                     ""type"": ""Button"",
-                    ""id"": ""f8fc9aea-810f-430e-9abf-b910c9972bb0"",
+                    ""id"": ""7ad430b6-176f-4067-ab8c-1ef201c94856"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""block"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e06d3b7-f67e-45c9-98e9-b3fdefb3cb38"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -202,28 +211,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1c987715-9df8-4243-8841-a0b39e60a73a"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4ac09568-b47b-40e8-9935-586e04183e40"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b04cf8a8-de21-40f6-bb62-ff0a08e791f9"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
@@ -328,7 +315,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeJab"",
+                    ""action"": ""Perryjab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -339,7 +326,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeJab"",
+                    ""action"": ""Perryjab"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -350,7 +337,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeJab"",
+                    ""action"": ""Perryjab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -361,7 +348,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeJab"",
+                    ""action"": ""Perryjab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -372,7 +359,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeJab"",
+                    ""action"": ""Perryjab"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -383,7 +370,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeJab"",
+                    ""action"": ""Perryjab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -394,7 +381,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeJab"",
+                    ""action"": ""Perryjab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -405,7 +392,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeUppercut"",
+                    ""action"": ""perry uppercut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -416,7 +403,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeUppercut"",
+                    ""action"": ""perry uppercut"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -427,7 +414,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeUppercut"",
+                    ""action"": ""perry uppercut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -438,7 +425,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeUppercut"",
+                    ""action"": ""perry uppercut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -449,7 +436,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeUppercut"",
+                    ""action"": ""perry uppercut"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -460,7 +447,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeUppercut"",
+                    ""action"": ""perry uppercut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -471,18 +458,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeUppercut"",
+                    ""action"": ""perry uppercut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
                     ""id"": ""7924d341-3510-4f3c-9099-f0529f1cf190"",
-                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeHook"",
+                    ""action"": ""perry hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -493,7 +480,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeHook"",
+                    ""action"": ""perry hook"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -504,7 +491,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeHook"",
+                    ""action"": ""perry hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -515,7 +502,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeHook"",
+                    ""action"": ""perry hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -526,7 +513,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeHook"",
+                    ""action"": ""perry hook"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -537,7 +524,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeHook"",
+                    ""action"": ""perry hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -548,9 +535,31 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DogeHook"",
+                    ""action"": ""perry hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4fc2895b-d645-4c9b-9066-703517a20648"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""doge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42cdf70e-4dfb-4890-a642-df9db38c7769"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -563,10 +572,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Gameplay_Jab = m_Gameplay.FindAction("Jab", throwIfNotFound: true);
         m_Gameplay_Right_Hook = m_Gameplay.FindAction("Right_Hook", throwIfNotFound: true);
         m_Gameplay_Uppercut = m_Gameplay.FindAction("Uppercut", throwIfNotFound: true);
-        m_Gameplay_DogeJab = m_Gameplay.FindAction("DogeJab", throwIfNotFound: true);
-        m_Gameplay_DogeHook = m_Gameplay.FindAction("DogeHook", throwIfNotFound: true);
-        m_Gameplay_DogeUppercut = m_Gameplay.FindAction("DogeUppercut", throwIfNotFound: true);
-        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_Perryjab = m_Gameplay.FindAction("Perryjab", throwIfNotFound: true);
+        m_Gameplay_perryhook = m_Gameplay.FindAction("perry hook", throwIfNotFound: true);
+        m_Gameplay_perryuppercut = m_Gameplay.FindAction("perry uppercut", throwIfNotFound: true);
+        m_Gameplay_doge = m_Gameplay.FindAction("doge", throwIfNotFound: true);
+        m_Gameplay_block = m_Gameplay.FindAction("block", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -632,10 +642,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jab;
     private readonly InputAction m_Gameplay_Right_Hook;
     private readonly InputAction m_Gameplay_Uppercut;
-    private readonly InputAction m_Gameplay_DogeJab;
-    private readonly InputAction m_Gameplay_DogeHook;
-    private readonly InputAction m_Gameplay_DogeUppercut;
-    private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_Perryjab;
+    private readonly InputAction m_Gameplay_perryhook;
+    private readonly InputAction m_Gameplay_perryuppercut;
+    private readonly InputAction m_Gameplay_doge;
+    private readonly InputAction m_Gameplay_block;
     public struct GameplayActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -644,10 +655,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Jab => m_Wrapper.m_Gameplay_Jab;
         public InputAction @Right_Hook => m_Wrapper.m_Gameplay_Right_Hook;
         public InputAction @Uppercut => m_Wrapper.m_Gameplay_Uppercut;
-        public InputAction @DogeJab => m_Wrapper.m_Gameplay_DogeJab;
-        public InputAction @DogeHook => m_Wrapper.m_Gameplay_DogeHook;
-        public InputAction @DogeUppercut => m_Wrapper.m_Gameplay_DogeUppercut;
-        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @Perryjab => m_Wrapper.m_Gameplay_Perryjab;
+        public InputAction @perryhook => m_Wrapper.m_Gameplay_perryhook;
+        public InputAction @perryuppercut => m_Wrapper.m_Gameplay_perryuppercut;
+        public InputAction @doge => m_Wrapper.m_Gameplay_doge;
+        public InputAction @block => m_Wrapper.m_Gameplay_block;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -669,18 +681,21 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Uppercut.started += instance.OnUppercut;
             @Uppercut.performed += instance.OnUppercut;
             @Uppercut.canceled += instance.OnUppercut;
-            @DogeJab.started += instance.OnDogeJab;
-            @DogeJab.performed += instance.OnDogeJab;
-            @DogeJab.canceled += instance.OnDogeJab;
-            @DogeHook.started += instance.OnDogeHook;
-            @DogeHook.performed += instance.OnDogeHook;
-            @DogeHook.canceled += instance.OnDogeHook;
-            @DogeUppercut.started += instance.OnDogeUppercut;
-            @DogeUppercut.performed += instance.OnDogeUppercut;
-            @DogeUppercut.canceled += instance.OnDogeUppercut;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
+            @Perryjab.started += instance.OnPerryjab;
+            @Perryjab.performed += instance.OnPerryjab;
+            @Perryjab.canceled += instance.OnPerryjab;
+            @perryhook.started += instance.OnPerryhook;
+            @perryhook.performed += instance.OnPerryhook;
+            @perryhook.canceled += instance.OnPerryhook;
+            @perryuppercut.started += instance.OnPerryuppercut;
+            @perryuppercut.performed += instance.OnPerryuppercut;
+            @perryuppercut.canceled += instance.OnPerryuppercut;
+            @doge.started += instance.OnDoge;
+            @doge.performed += instance.OnDoge;
+            @doge.canceled += instance.OnDoge;
+            @block.started += instance.OnBlock;
+            @block.performed += instance.OnBlock;
+            @block.canceled += instance.OnBlock;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -697,18 +712,21 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Uppercut.started -= instance.OnUppercut;
             @Uppercut.performed -= instance.OnUppercut;
             @Uppercut.canceled -= instance.OnUppercut;
-            @DogeJab.started -= instance.OnDogeJab;
-            @DogeJab.performed -= instance.OnDogeJab;
-            @DogeJab.canceled -= instance.OnDogeJab;
-            @DogeHook.started -= instance.OnDogeHook;
-            @DogeHook.performed -= instance.OnDogeHook;
-            @DogeHook.canceled -= instance.OnDogeHook;
-            @DogeUppercut.started -= instance.OnDogeUppercut;
-            @DogeUppercut.performed -= instance.OnDogeUppercut;
-            @DogeUppercut.canceled -= instance.OnDogeUppercut;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
+            @Perryjab.started -= instance.OnPerryjab;
+            @Perryjab.performed -= instance.OnPerryjab;
+            @Perryjab.canceled -= instance.OnPerryjab;
+            @perryhook.started -= instance.OnPerryhook;
+            @perryhook.performed -= instance.OnPerryhook;
+            @perryhook.canceled -= instance.OnPerryhook;
+            @perryuppercut.started -= instance.OnPerryuppercut;
+            @perryuppercut.performed -= instance.OnPerryuppercut;
+            @perryuppercut.canceled -= instance.OnPerryuppercut;
+            @doge.started -= instance.OnDoge;
+            @doge.performed -= instance.OnDoge;
+            @doge.canceled -= instance.OnDoge;
+            @block.started -= instance.OnBlock;
+            @block.performed -= instance.OnBlock;
+            @block.canceled -= instance.OnBlock;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -732,9 +750,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnJab(InputAction.CallbackContext context);
         void OnRight_Hook(InputAction.CallbackContext context);
         void OnUppercut(InputAction.CallbackContext context);
-        void OnDogeJab(InputAction.CallbackContext context);
-        void OnDogeHook(InputAction.CallbackContext context);
-        void OnDogeUppercut(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnPerryjab(InputAction.CallbackContext context);
+        void OnPerryhook(InputAction.CallbackContext context);
+        void OnPerryuppercut(InputAction.CallbackContext context);
+        void OnDoge(InputAction.CallbackContext context);
+        void OnBlock(InputAction.CallbackContext context);
     }
 }

@@ -10,11 +10,10 @@ using System.Collections.Generic;
 public class CombatController : MonoBehaviour
 {
     // Reference to the player's attack colliders for light and heavy attacks
-    public Collider lightAttackCollider;
+    public List<Collider> attackColliders;
     // Attack damage for light and heavy attacks
     public int currentIndex = 0;
     public GameObject player;
-    public GameObject gmg;
     private int cid;
     public float colorChangeDuration = 1f; // Duration for which the color will remain changed
     private Color originalColor;
@@ -22,11 +21,14 @@ public class CombatController : MonoBehaviour
     public int playerID;
     private int dmg;
     private bool cantakedamage;
+    [SerializeField]
+    private int fist_rightness;
     [SerializeField]private int atID;
     private Animator animator;
     [Header("Events")]
     [Space]
     public UnityEvent OnJab;
+
     private bool IsCombo =false;
     // Combo matrix where each row represents a combo sequence
     public int[,] comboMatrix = new int[,]
@@ -116,54 +118,39 @@ public class CombatController : MonoBehaviour
         }
         
     }
-    // Method for handling light attack logic
-
-    // Method called when attack animation ends
-    public void OnAttackAnimationEnd()
-    {
-        // Deactivate attack colliders
-        lightAttackCollider.enabled = false;
-    }
 
     // Function to be triggered when a combo is executed
-    private void ComboExecuted(int comboId)
+private void ComboExecuted(int comboId)
+{
+    cid = comboId;
+    switch (comboId)
     {
-        cid=comboId;
-        lightAttackCollider.enabled = true;
-        if(comboId == 0)
-        {
-            animator.Play("=overhand");
-            StartCoroutine(LeaveCombo(0.1f));
-        }
-        if(comboId == 1)
-        {
-           StartCoroutine(LeaveCombo(0.1f));
-        }
-        if(comboId == 2)
-        {         
-            StartCoroutine(LeaveCombo(0.1f));
-        }
-        if(comboId == 3)
-        {
-            StartCoroutine(LeaveCombo(0.1f));
-        }
-        if (playerRigidbody != null)
-        {
-             //playerRigidbody.AddForce(Vector2.up * (comboId + 1) * 5, ForceMode2D.Impulse);
-        }
-    
-        lightAttackCollider.enabled = true;
-        Invoke("DeactivateCollider", 1f);
+        case 0:
+            // Trigger the "Overhand" animation
+            animator.SetTrigger("overhand");
+            ActivateColliderWithDelay(2,0.1f,0.06f);
+            StartCoroutine(LeaveCombo(0.15f));
+            break;
+        case 1:
+            // Trigger the "SpinningBackFist" animation
+            animator.SetTrigger("spin");
+            ActivateColliderWithDelay(0,0.1f,0.06f);
+            playerRigidbody.AddForce(Vector3.right * fist_rightness, ForceMode.Impulse);
+            StartCoroutine(LeaveCombo(0.15f));
+            break;
+        case 2:
+            // Trigger the "Chop" animation
+            animator.SetTrigger("chop");
+            StartCoroutine(LeaveCombo(0.15f));
+            break;
+        case 3:
+            // Trigger the "Superman" animation
+            animator.SetTrigger("superman");
+            StartCoroutine(LeaveCombo(0.3f));
+            ActivateColliderWithDelay(0,0.7f,0.03f);
+            break;
     }
-    // Method to deactivate the collider
-    private void DeactivateCollider()
-    {
-        lightAttackCollider.enabled = false;
-    }
-    private void ChangePlayerColor(Color color)
-    {
-        Debug.Log("_");
-    }
+}
     public void Jab(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -177,8 +164,7 @@ public class CombatController : MonoBehaviour
                 {
                     animator.Play("jab");
                 }
-                lightAttackCollider.enabled = true;
-                Invoke("DeactivateCollider", 1f);
+                ActivateColliderWithDelay(0,0,0.01f);
             }
         }
 
@@ -193,8 +179,7 @@ public class CombatController : MonoBehaviour
                 dmg = 5;
                 ExecuteAttack(2);
                 animator.Play("hook");
-                lightAttackCollider.enabled = true;
-                Invoke("DeactivateCollider", 0.2f);
+                ActivateColliderWithDelay(1,0.04f,0.04f);
             }
         }
     }
@@ -208,8 +193,7 @@ public class CombatController : MonoBehaviour
                 dmg = 3;
                 atID=3;
                 animator.Play("uppercut");
-                lightAttackCollider.enabled = true;
-                Invoke("DeactivateCollider", 1f);
+                ActivateColliderWithDelay(2,0.02f,0.06f);
             }
         }
     }
@@ -253,6 +237,30 @@ public class CombatController : MonoBehaviour
             cantakedamage =false;
         }
     }
+    public void ActivateColliderWithDelay(int colliderIndex, float activateDelay, float deactivateDelay)
+    {
+        StartCoroutine(ActivateColliderCoroutine(colliderIndex, activateDelay, deactivateDelay));
+    }
+
+    private IEnumerator ActivateColliderCoroutine(int colliderIndex, float activateDelay, float deactivateDelay)
+    {
+        yield return new WaitForSeconds(activateDelay);
+
+        // Activate the specific collider
+        if (colliderIndex >= 0 && colliderIndex < attackColliders.Count)
+        {
+            attackColliders[colliderIndex].enabled = true;
+        }
+
+        yield return new WaitForSeconds(deactivateDelay);
+
+        // Deactivate the specific collider
+        if (colliderIndex >= 0 && colliderIndex < attackColliders.Count)
+        {
+            attackColliders[colliderIndex].enabled = false;
+        }
+    }
+
     private IEnumerator LeaveCombo(float delay)
     {
         yield return new WaitForSeconds(delay);
