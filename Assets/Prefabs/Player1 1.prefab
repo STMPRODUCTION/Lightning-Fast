@@ -1316,21 +1316,85 @@ MonoBehaviour:
     m_ActionId: 758e972a-5db8-45bc-9516-3f2fe59420a1
     m_ActionName: Gameplay/Uppercut[/XInputControllerWindows/buttonNorth,/Keyboard/h,/Keyboard/l]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 656469604859588985}
+        m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
+        m_MethodName: p_Jab
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ab135267-bf9e-4ccb-a5b1-f4dcf9c0d2f6
     m_ActionName: Gameplay/DogeJab[/XInputControllerWindows/rightStick/left,/Keyboard/f,/Keyboard/leftShift,/Keyboard/j,/Keyboard/rightShift]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 656469604859588985}
+        m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
+        m_MethodName: p_Hook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f9839cb3-5bef-4d53-ba61-e032df384cd0
     m_ActionName: Gameplay/DogeHook[/XInputControllerWindows/rightStick/down,/Keyboard/g,/Keyboard/leftShift,/Keyboard/k,/Keyboard/rightShift]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 656469604859588985}
+        m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
+        m_MethodName: p_Uppercut
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3c4b9ab0-04a1-4484-815f-12698029a64d
     m_ActionName: Gameplay/DogeUppercut[/XInputControllerWindows/rightStick/up,/Keyboard/h,/Keyboard/leftShift,/Keyboard/l,/Keyboard/rightShift]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f8fc9aea-810f-430e-9abf-b910c9972bb0
-    m_ActionName: Gameplay/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+      m_Calls:
+      - m_Target: {fileID: 656469604859588985}
+        m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
+        m_MethodName: Dodge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7ad430b6-176f-4067-ab8c-1ef201c94856
+    m_ActionName: Gameplay/doge[/XInputControllerWindows/rightShoulder,/XInputControllerWindows1/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 656469604859588985}
+        m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
+        m_MethodName: Block
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e06d3b7-f67e-45c9-98e9-b3fdefb3cb38
+    m_ActionName: Gameplay/block[/XInputControllerWindows/leftShoulder,/XInputControllerWindows1/leftShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1361,7 +1425,10 @@ MonoBehaviour:
   OnJab:
     m_PersistentCalls:
       m_Calls: []
+  upforce: 20
+  superman_punch_right: 2
   layername: p1
+  lastAttackTime: 0
 --- !u!114 &-722504542948236180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,6 +1443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 1
   currentHealth: 0
+  maxHealth: 700
   healthSlider: {fileID: 0}
   name: P2 Health
 --- !u!65 &7695155832709159628
@@ -1848,7 +1916,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4493585093827132993, guid: 3390164a91261c84c89be3667c0b6f50, type: 3}
+  m_Mesh: {fileID: 4493585093827132993, guid: 8fbe0fe0c4ea22c449ca7325318ff5ce, type: 3}
   m_Bones:
   - {fileID: 709544372832256052}
   - {fileID: 2924125856745245100}

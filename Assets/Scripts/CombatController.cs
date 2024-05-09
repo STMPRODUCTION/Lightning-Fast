@@ -14,6 +14,7 @@ public class CombatController : MonoBehaviour
     // Attack damage for light and heavy attacks
     public int currentIndex = 0;
     public GameObject player;
+    private int parry;
     private int cid;
     public float colorChangeDuration = 1f; // Duration for which the color will remain changed
     private Color originalColor;
@@ -28,7 +29,9 @@ public class CombatController : MonoBehaviour
     [Header("Events")]
     [Space]
     public UnityEvent OnJab;
-
+    private bool isBlocking;
+    public float upforce=20;
+    public float superman_punch_right=2;
     private bool IsCombo =false;
     // Combo matrix where each row represents a combo sequence
     public int[,] comboMatrix = new int[,]
@@ -40,6 +43,7 @@ public class CombatController : MonoBehaviour
 
     };
     private HealthController healthController;
+    private CombatController cc;
 
     public string layername; // Layer name to search for
     // Index to keep track of the current combo sequence
@@ -60,6 +64,7 @@ public class CombatController : MonoBehaviour
 
             // Try to get the HealthController component from the object
             HealthController hc = objectWithTag.GetComponent<HealthController>();
+            cc = objectWithTag.GetComponent<CombatController>();
 
             // If the HealthController component is found, assign it
             if (hc != null)
@@ -77,50 +82,73 @@ public class CombatController : MonoBehaviour
             Debug.LogError("No object with the specified tag was found.");
         }
     }
+public float lastAttackTime; // Variable to store the time of the last attack
+
     public void ExecuteAttack(int attackId)
     {
-        if (disabledRows.Count == comboMatrix.GetLength(0))
+        if(!isBlocking)
         {
-            disabledRows.Clear();
-            currentIndex =0;
-        }
-        // Iterate through each row of the combo matrix
-        for (int i = 0; i < comboMatrix.GetLength(0); i++)
-        {
-            if(disabledRows.Contains(i))
-                continue;
-            if(attackId != comboMatrix[i,comboIndex])
+            // Check if the time elapsed since the last attack exceeds 1 second
+            if (Time.time - lastAttackTime > 0.5f)
             {
-                disabledRows.Add(i);
+                comboIndex = 0; // Reset combo index
+                disabledRows.Clear(); // Clear disabled rows
             }
-        }
-        if(disabledRows.Count == comboMatrix.GetLength(0))
-        {
-            comboIndex=0;
-            disabledRows.Clear();
-        }
-        else
-        {
-            comboIndex++;
-            for (int i = 0; i < comboMatrix.GetLength(0); i++)
-            {
 
-                if(disabledRows.Contains(i))
-                    continue;
-                if(comboMatrix[i,comboIndex]== -1)
+            // Update the time of the last attack
+            lastAttackTime = Time.time;
+
+            // If all rows are disabled, reset combo index and disabled rows
+            if (disabledRows.Count == comboMatrix.GetLength(0))
+            {
+                comboIndex = 0;
+                disabledRows.Clear();
+            }
+            else
+            {
+                // Iterate through each row of the combo matrix
+                for (int i = 0; i < comboMatrix.GetLength(0); i++)
                 {
-                    IsCombo =true;
-                    ComboExecuted(i);
-                    comboIndex=0;
+                    if (disabledRows.Contains(i))
+                        continue;
+
+                    // Check if the current attack matches the combo at the current index
+                    if (attackId != comboMatrix[i, comboIndex])
+                    {
+                        disabledRows.Add(i);
+                    }
+                }
+
+                // If all rows are disabled for this combo index, reset combo index and disabled rows
+                if (disabledRows.Count == comboMatrix.GetLength(0))
+                {
+                    comboIndex = 0;
                     disabledRows.Clear();
+                }
+                else
+                {
+                    // Advance combo index and check if any combo sequence is complete
+                    comboIndex++;
+                    for (int i = 0; i < comboMatrix.GetLength(0); i++)
+                    {
+                        if (disabledRows.Contains(i))
+                            continue;
+
+                        if (comboMatrix[i, comboIndex] == -1)
+                        {
+                            IsCombo = true;
+                            ComboExecuted(i);
+                            comboIndex = 0;
+                            disabledRows.Clear();
+                        }
+                    }
                 }
             }
         }
-        
     }
-
+    
     // Function to be triggered when a combo is executed
-private void ComboExecuted(int comboId)
+    private void ComboExecuted(int comboId)
 {
     cid = comboId;
     switch (comboId)
@@ -146,6 +174,8 @@ private void ComboExecuted(int comboId)
         case 3:
             // Trigger the "Superman" animation
             animator.SetTrigger("superman");
+            playerRigidbody.AddForce(Vector3.up * upforce, ForceMode.Impulse);
+            playerRigidbody.AddForce(Vector3.right * superman_punch_right, ForceMode.Impulse);
             StartCoroutine(LeaveCombo(0.3f));
             ActivateColliderWithDelay(0,0.7f,0.03f);
             break;
@@ -197,46 +227,182 @@ private void ComboExecuted(int comboId)
             }
         }
     }
+    public void Block(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if (!isBlocking)
+            {
+                isBlocking = true;
+                animator.SetBool("block",true);
+            }
+        }
+        if (context.performed)
+        {
+            isBlocking = false;
+            animator.SetBool("block",false);
+        }
+    }
+    private int dodgeCount = 0;
+    private bool doge =true;
+    private bool IsDoging=false;
+    public void Dodge(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if(doge)
+            {
+                animator.SetTrigger("doge1");
+                doge=false;
+            }
+            else if(!doge)
+            {
+                animator.SetTrigger("doge2");
+                doge=true;
+            }
+
+        }
+    }
+    public void p_Uppercut(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if(parry == 0)
+                {
+                    StartCoroutine(Set_Parry(0.5f,3));
+                    animator.SetTrigger("p_uppercut");
+                }
+        }
+    }
+    public void p_Hook(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if(parry == 0)
+            {
+                StartCoroutine(Set_Parry(0.5f,2));
+                animator.SetTrigger("p_hook");
+            }
+        }
+    }
+    public void p_Jab(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if(parry == 0)
+            {
+                StartCoroutine(Set_Parry(0.2f,1));
+                animator.SetTrigger("p_jab");
+            }
+        }
+    }
+
     // Method for dealing damage to enemies
     private void OnTriggerEnter(Collider other)
     {
-        // Check if collided with enemy and attacking
-        if (other.CompareTag("Enemy") || other.CompareTag(layername))
+        if (isBlocking)
         {
-           
-            if(atID ==1)
-                healthController.TakeDamage(1);
-            else if(atID ==2)
-                healthController.TakeDamage(5);
-            else if(atID ==3)
-                healthController.TakeDamage(3);
-            if(cid == 0 && atID ==2)
+            // Logic for blocking specific attacks
+            if ((atID == 1 || atID == 3 || cid == 2 || cid == 3))
             {
-                healthController.TakeDamage(7);
-                cid=-1;
+                // Logic for blocking
+                return;
             }
-             else if(cid == 1 && atID ==2)
-            {   
-                healthController.TakeDamage(5);
-                cid=-1;
-            }
-            else if(cid == 2 && atID ==2)
-            {
-                healthController.TakeDamage(4);
-                cid=-1;
-            }
-            else if(cid == 3 && atID ==3)
-            {
-                healthController.TakeDamage(20);
-                cid=-1;
-            }
-            cantakedamage =true;
-
         }
-        else{
-            cantakedamage =false;
+        else if (IsDoging)
+        {
+            // Logic for dodging specific attacks
+            if (( IsDoging && (atID == 1 || atID == 2 || cid == 0 || cid == 1 || cid == 3)) ||
+                ( IsDoging && (atID == 1 || atID == 2 || cid == 0 || cid == 1 || cid == 3)))
+            {
+                // Logic for dodging
+                return;
+            }
+        }
+        else
+        {
+            // Logic for taking damage
+            if (other.CompareTag("Enemy") || other.CompareTag(layername))
+            {
+                if (atID == 1)
+                {
+                    if(cc.parry != 1)
+                        healthController.TakeDamage(1);
+                    else if (cc.parry==1)
+                    {
+                        playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
+                    }
+                }
+                else if (atID == 2)
+                {
+                    if(cc.parry != 2)
+                        healthController.TakeDamage(5);
+                    else if (cc.parry==2)
+                    {
+                        playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
+                    }
+                }
+                else if (atID == 3)
+                {   
+                    if(cc.parry != 3)
+                        healthController.TakeDamage(3);
+                    else if (cc.parry==3)
+                    {
+                        playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
+                    }
+
+                }
+
+                if (cid == 0 && atID == 2)
+                {
+                    if(cc.parry != 2)
+                        healthController.TakeDamage(7);
+                    else if (cc.parry==2)
+                    {
+                        playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
+                    }
+                    cid = -1;
+                }
+                else if (cid == 1 && atID == 2)
+                {
+                    if(cc.parry != 2)
+                        healthController.TakeDamage(5);
+                    else if (cc.parry==2)
+                    {
+                        playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
+                    }
+                    cid = -1;
+                }
+                else if (cid == 2 && atID == 2)
+                {
+                    if(cc.parry != 2)
+                        healthController.TakeDamage(4);
+                    else if (cc.parry==2)
+                    {
+                        playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
+                    }
+                    cid = -1;
+                }
+                else if (cid == 3 && atID == 3)
+                {
+                    if(cc.parry != 3)
+                        healthController.TakeDamage(50);
+                    else if (cc.parry==3)
+                    {
+                        playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
+                    }
+                    cid = -1;
+                }
+                cantakedamage = true;
+                atID=0;
+            }
+            else
+            {
+                cantakedamage = false;
+            }
         }
     }
+
     public void ActivateColliderWithDelay(int colliderIndex, float activateDelay, float deactivateDelay)
     {
         StartCoroutine(ActivateColliderCoroutine(colliderIndex, activateDelay, deactivateDelay));
@@ -244,12 +410,14 @@ private void ComboExecuted(int comboId)
 
     private IEnumerator ActivateColliderCoroutine(int colliderIndex, float activateDelay, float deactivateDelay)
     {
+        IsCombo =true;
         yield return new WaitForSeconds(activateDelay);
 
         // Activate the specific collider
         if (colliderIndex >= 0 && colliderIndex < attackColliders.Count)
         {
             attackColliders[colliderIndex].enabled = true;
+
         }
 
         yield return new WaitForSeconds(deactivateDelay);
@@ -259,12 +427,19 @@ private void ComboExecuted(int comboId)
         {
             attackColliders[colliderIndex].enabled = false;
         }
+        IsCombo=false;
     }
 
     private IEnumerator LeaveCombo(float delay)
     {
         yield return new WaitForSeconds(delay);
         IsCombo =false;
+    }    
+    private IEnumerator Set_Parry(float waitTime, int parryID)
+    {
+        parry = parryID;
+        yield return new WaitForSeconds(waitTime);
+        parry = 0;
     }
 
 }
