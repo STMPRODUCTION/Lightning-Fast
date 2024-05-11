@@ -1425,8 +1425,8 @@ MonoBehaviour:
   OnJab:
     m_PersistentCalls:
       m_Calls: []
-  upforce: 20
-  superman_punch_right: 2
+  upforce: 5
+  superman_punch_right: -5
   layername: p1
   lastAttackTime: 0
 --- !u!114 &-722504542948236180

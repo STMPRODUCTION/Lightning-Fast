@@ -327,7 +327,10 @@ public float lastAttackTime; // Variable to store the time of the last attack
                 if (atID == 1)
                 {
                     if(cc.parry != 1)
+                    {
                         healthController.TakeDamage(1);
+                        cc.playerRigidbody.AddForce(Vector3.right * fist_rightness/4, ForceMode.Impulse);
+                    }
                     else if (cc.parry==1)
                     {
                         playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
@@ -336,7 +339,10 @@ public float lastAttackTime; // Variable to store the time of the last attack
                 else if (atID == 2)
                 {
                     if(cc.parry != 2)
+                        {
                         healthController.TakeDamage(5);
+                        cc.playerRigidbody.AddForce(Vector3.right * fist_rightness/4, ForceMode.Impulse);
+                        }
                     else if (cc.parry==2)
                     {
                         playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
@@ -345,7 +351,10 @@ public float lastAttackTime; // Variable to store the time of the last attack
                 else if (atID == 3)
                 {   
                     if(cc.parry != 3)
+                        {
                         healthController.TakeDamage(3);
+                        cc.playerRigidbody.AddForce(Vector3.right  * fist_rightness/4, ForceMode.Impulse);
+                        }
                     else if (cc.parry==3)
                     {
                         playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
@@ -356,7 +365,10 @@ public float lastAttackTime; // Variable to store the time of the last attack
                 if (cid == 0 && atID == 2)
                 {
                     if(cc.parry != 2)
+                        {
                         healthController.TakeDamage(7);
+                        cc.playerRigidbody.AddForce(Vector3.right * fist_rightness, ForceMode.Impulse);
+                        }
                     else if (cc.parry==2)
                     {
                         playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
@@ -366,7 +378,10 @@ public float lastAttackTime; // Variable to store the time of the last attack
                 else if (cid == 1 && atID == 2)
                 {
                     if(cc.parry != 2)
+                       {
                         healthController.TakeDamage(5);
+                        cc.playerRigidbody.AddForce(Vector3.right * fist_rightness, ForceMode.Impulse);
+                        }
                     else if (cc.parry==2)
                     {
                         playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
@@ -376,7 +391,11 @@ public float lastAttackTime; // Variable to store the time of the last attack
                 else if (cid == 2 && atID == 2)
                 {
                     if(cc.parry != 2)
+                        
+                    {
                         healthController.TakeDamage(4);
+                        cc.playerRigidbody.AddForce(Vector3.right  * fist_rightness/2, ForceMode.Impulse);
+                        }
                     else if (cc.parry==2)
                     {
                         playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
@@ -386,7 +405,10 @@ public float lastAttackTime; // Variable to store the time of the last attack
                 else if (cid == 3 && atID == 3)
                 {
                     if(cc.parry != 3)
+                        {
                         healthController.TakeDamage(50);
+                        cc.playerRigidbody.AddForce(Vector3.right  * fist_rightness*2, ForceMode.Impulse);
+                        }
                     else if (cc.parry==3)
                     {
                         playerRigidbody.AddForce(Vector3.right * -1 * fist_rightness, ForceMode.Impulse);
