@@ -1,25 +1,36 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class ControllerNavigator : MonoBehaviour
 {
     public float navigationThreshold = 0.5f; // Threshold for stick movement to register as navigation
-    public float selectedScaleMultiplier = 1.4f; // Multiplier for selected UI scale
+    public float selectedScaleMultiplier = 1.4f;
+    public float defaultScaleMultiplier = 1.5f; // Multiplier for selected UI scale
 
+    public List<Selectable> selectableList; // List of selectable UI elements
     public Selectable currentSelectable; // Currently selected UI element
     private bool isFindingSelectable = false; // Flag to control if script is finding a new selectable
 
     void Start()
     {
-        // Set the first selectable UI element as the initial selection
-        currentSelectable = EventSystem.current.firstSelectedGameObject.GetComponent<Selectable>();
-        UpdateSelectedUI();
+        // Set the first selectable UI element from the list as the initial selection
+        if (selectableList != null && selectableList.Count > 0)
+        {
+            currentSelectable = selectableList[0];
+            currentSelectable.Select();
+            UpdateSelectedUI();
+        }
+        else
+        {
+            Debug.LogWarning("Selectable list is empty or not assigned.");
+        }
     }
 
     void Update()
     {
-        if (!isFindingSelectable)
+        if (!isFindingSelectable && selectableList != null && selectableList.Count > 0)
         {
             // Get movement input from the gamepad
             float verticalInput = Input.GetAxis("Vertical");
@@ -54,7 +65,7 @@ public class ControllerNavigator : MonoBehaviour
         Selectable nextSelectable = null;
         float closestDistance = float.MaxValue;
 
-        foreach (var selectable in FindObjectsOfType<Selectable>())
+        foreach (var selectable in selectableList)
         {
             if (selectable != current)
             {
@@ -74,14 +85,23 @@ public class ControllerNavigator : MonoBehaviour
 
     void UpdateSelectedUI()
     {
-        // Reset the scale of all UI elements
-        foreach (var selectable in FindObjectsOfType<Selectable>())
+        // Reset the scale of all UI elements in the list to the default scale multiplier
+        foreach (var selectable in selectableList)
         {
-            selectable.transform.localScale = Vector3.one;
+            if (selectable.gameObject.tag != "UI_Non_Interactable")
+            {
+                selectable.transform.localScale = Vector3.one * defaultScaleMultiplier;
+            }
         }
 
-        // Set the scale of the currently selected UI element
-        RectTransform rectTransform = currentSelectable.GetComponent<RectTransform>();
-        rectTransform.localScale = Vector3.one * selectedScaleMultiplier;
+        // Set the scale of the currently selected UI element to the selected scale multiplier
+        if (currentSelectable != null)
+        {
+            RectTransform rectTransform = currentSelectable.GetComponent<RectTransform>();
+            if (rectTransform != null)
+            {
+                rectTransform.localScale = Vector3.one * selectedScaleMultiplier;
+            }
+        }
     }
 }

@@ -26,6 +26,9 @@ Limb
 AdvancedRuleOverrideTile
 UnityEngine
 RuleOverrideTile
+MaterialQuality
+Utilities
+MaterialQualityUtilities
 ObstacleAvoidanceType
 UnityEngine
 NavMeshAgent

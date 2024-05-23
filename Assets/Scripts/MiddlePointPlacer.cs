@@ -78,6 +78,5 @@ public class CameraController : MonoBehaviour
             // Set the flag to indicate that camera movement is needed
             isCameraMovementNeeded = true;
         }
-        Debug.Log("Required Size: " + requiredSize + ", Distance: " + distance +", maxDistance:"+ maxDistance + ", Min Distance Threshold: " + minDistanceThreshold+" _"+isCameraMovementNeeded);
     }
 }

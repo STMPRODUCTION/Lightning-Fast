@@ -7,6 +7,12 @@ TagManager:
   - Enemy
   - p1
   - p2
+  - UI_Non_Interacable
+  - WinScreen
+  - P1Wins
+  - P2Wins
+  - rounds
+  - elapsed
   layers:
   - Default
   - TransparentFX
